@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>{{ video.title }}</h2>
+    <select id="filter-select">
+        <option value="RGB">RGB</option>
+        <option value="GRAY">GRAY</option>
+        <option value="HSV">HSV</option>
+    </select>
+    <img id="video-stream" src="{% url 'video_filter' video.id %}" />
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('filter-select').addEventListener('change',
+            function() {
+                var filter = this.value;
+                var videoStream = document.getElementById('video-stream');
+                videoStream.src = "{% url 'video_filter' video.id %}?filter=" + filter;
+            });
+        });
+    </script>
+</body>
+</html>

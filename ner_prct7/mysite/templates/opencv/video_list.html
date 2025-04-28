@@ -1,0 +1,12 @@
+</head>
+<body>
+<a href="{% url 'upload_video' %}" class="btn btn-primary">Добавить видик</a>
+
+<h2>Video List</h2>
+{% for video in videos %}
+    <div>
+        <li><a href="{% url 'filter' video.id %}">{{ video.title }}</a></li>
+    </div>
+{% endfor %}
+</body>
+</html>
